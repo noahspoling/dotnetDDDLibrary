@@ -4,6 +4,11 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+
+    <!-- So the infrastructure can access the Interface and Entities-->
+    <RootNamespace>Bookstore.Domain</RootNamespace>
+    <AssemblyName>Bookstore.Domain</AssemblyName>
+    
   </PropertyGroup>
 
 </Project>

@@ -4,6 +4,13 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-  </PropertyGroup>
 
+    <RootNamespace>Bookstore.Infrastructure</RootNamespace>
+    <AssemblyName>Bookstore.Infrastructure</AssemblyName>
+  </PropertyGroup>
+  
+  <!-- Gets namespace of Domain-->
+  <ItemGroup>
+    <ProjectReference Include="../Bookstore.Domain/Bookstore.Domain.csproj" />
+  </ItemGroup>
 </Project>
