@@ -8,9 +8,10 @@
     <RootNamespace>Bookstore.Infrastructure</RootNamespace>
     <AssemblyName>Bookstore.Infrastructure</AssemblyName>
   </PropertyGroup>
-  
+
   <!-- Gets namespace of Domain-->
   <ItemGroup>
     <ProjectReference Include="../Bookstore.Domain/Bookstore.Domain.csproj" />
+    <ProjectReference Include="../Bookstore.Application/Bookstore.Application.csproj" />
   </ItemGroup>
 </Project>

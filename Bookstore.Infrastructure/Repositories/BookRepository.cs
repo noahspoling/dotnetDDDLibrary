@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Bookstore.Domain.Entities;
+using Bookstore.Domain.ValueObjects;
 using Bookstore.Domain.Interfaces;
 
 namespace Bookstore.Infrastructure.Repositories
@@ -13,8 +14,8 @@ namespace Bookstore.Infrastructure.Repositories
             // Initialize the in-memory book list (for demonstration purposes)
             _books = new List<Book>
             {
-                new Book { Id = 1, Title = "dsd", Author = "Author 1", Genre = new Genre("Fiction"), ISBN = "123456789" },
-                new Book { Id = 2, Title = "Book 2", Author = "Author 2", Genre = new Genre("Fantasy"), ISBN = "987654321" }
+                new Book { Id = 1, Title = new Title("Book 1"), Author = "Author 1", Genre = new Genre("Fiction"), ISBN = "123456789" },
+                new Book { Id = 2, Title = new Title("Book 2"), Author = "Author 2", Genre = new Genre("Fantasy"), ISBN = "987654321" }
                 // Add more books as needed
             };
         }

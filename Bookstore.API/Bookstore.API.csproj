@@ -4,11 +4,18 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+
+    <RootNamespace>Bookstore.API</RootNamespace>
+    <AssemblyName>Bookstore.API</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="../Bookstore.Domain/Bookstore.Domain.csproj" />
+    <ProjectReference Include="../Bookstore.Application/Bookstore.Application.csproj" />
+    <ProjectReference Include="../Bookstore.Infrastructure/Bookstore.Infrastructure.csproj" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.9" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
+
 
 </Project>
