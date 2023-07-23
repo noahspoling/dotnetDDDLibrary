@@ -3,9 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Bookstore.Application.Interfaces;
-using Bookstore.Application.Services;
 using Bookstore.Domain.Interfaces;
+using Bookstore.Application.Services;
 using Bookstore.Infrastructure.Repositories;
 using Bookstore.API.Controllers;
 

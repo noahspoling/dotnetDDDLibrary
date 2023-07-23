@@ -2,8 +2,7 @@
 
 using System.Collections.Generic;
 using Bookstore.Domain.Entities;
-
-namespace Bookstore.Application.Interfaces
+namespace Bookstore.Domain.Interfaces
 {
     public interface IBookService
     {

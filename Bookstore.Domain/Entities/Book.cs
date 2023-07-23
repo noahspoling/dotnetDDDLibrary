@@ -8,7 +8,7 @@ namespace Bookstore.Domain.Entities
     {
         public int Id {get; set; }
         public Title Title {get; set;}
-        public string Author {get; set;}
+        public Author Author {get; set;}
         public Genre Genre {get; set;}
         public string ISBN {get; set;}
 
@@ -26,19 +26,24 @@ namespace Bookstore.Domain.Entities
             Genre = genre;
             ISBN = isbn;
         }
-        public Book(Title title, string author, Genre genre, string isbn) {
+        public Book(Title title, Author author, Genre genre, string isbn) {
             Title = title;
             Author = author;
             Genre = genre;
             ISBN = isbn;
 
         }
-        public Book(int id, Title title, string author, Genre genre, string isbn) {
+        public Book(int id, Title title, Author author, Genre genre, string isbn) {
             Id = id;
             Title = title;
             Author = author;
             Genre = genre;
             ISBN = isbn;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
         }
     }
 }

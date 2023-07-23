@@ -1,7 +1,6 @@
 // Bookstore.Application.Services/BookService.cs
 
 using System.Collections.Generic;
-using Bookstore.Application.Interfaces;
 using Bookstore.Domain.Entities;
 using Bookstore.Domain.Interfaces;
 

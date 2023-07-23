@@ -1,4 +1,4 @@
-using Bookstore.Application.Interfaces;
+using Bookstore.Domain.Interfaces;
 using Bookstore.Application.Services;
 using Bookstore.Domain.Interfaces;
 using Bookstore.Infrastructure.Repositories;
