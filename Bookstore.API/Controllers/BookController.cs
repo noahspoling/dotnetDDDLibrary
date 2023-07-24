@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Bookstore.Domain.Interfaces;
 using Bookstore.Application.Services;
 using Bookstore.Domain.Entities;
+using Bookstore.Domain.Models;
 
 namespace Bookstore.API.Controllers
 {
@@ -21,7 +22,7 @@ namespace Bookstore.API.Controllers
 
         // GET api/books
         [HttpGet]
-        public ActionResult<IEnumerable<Book>> GetAllBooks()
+        public ActionResult<IEnumerable<BookDTO>> GetAllBooks()
         {
             var books = _bookService.GetAllBooks();
             return Ok(books);
@@ -42,7 +43,7 @@ namespace Bookstore.API.Controllers
 
         // POST api/books
         [HttpPost]
-        public IActionResult AddBook(Book book)
+        public IActionResult AddBook(BookDTO book)
         {
             _bookService.AddBook(book);
             return CreatedAtAction(nameof(GetBookById), new { id = book.Id }, book);
@@ -50,7 +51,7 @@ namespace Bookstore.API.Controllers
 
         // PUT api/books/5
         [HttpPut("{id}")]
-        public IActionResult UpdateBook(int id, Book book)
+        public IActionResult UpdateBook(int id, BookDTO book)
         {
             var existingBook = _bookService.GetBookById(id);
             if (existingBook == null)
@@ -59,7 +60,7 @@ namespace Bookstore.API.Controllers
             }
 
             book.Id = id;
-            _bookService.UpdateBook(book);
+            _bookService.UpdateBook(id, book);
             return NoContent();
         }
 

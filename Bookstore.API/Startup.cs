@@ -7,6 +7,7 @@ using Bookstore.Domain.Interfaces;
 using Bookstore.Application.Services;
 using Bookstore.Infrastructure.Repositories;
 using Bookstore.API.Controllers;
+using Microsoft.EntityFrameworkCore;
 
 namespace Bookstore.API
 {
@@ -22,7 +23,10 @@ namespace Bookstore.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<BookstoreContext>(options =>
+                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers().AddApplicationPart(typeof(BooksController).Assembly);;
+            services.AddControllers().AddApplicationPart(typeof(AuthorController).Assembly);;
 
             // Register the Swagger services
             services.AddSwaggerGen();

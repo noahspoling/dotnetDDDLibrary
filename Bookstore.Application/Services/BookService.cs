@@ -2,37 +2,94 @@
 
 using System.Collections.Generic;
 using Bookstore.Domain.Entities;
+using Bookstore.Domain.ValueObjects;
+using Bookstore.Domain.Models;
 using Bookstore.Domain.Interfaces;
+using Bookstore.Application.Services;
 
 namespace Bookstore.Application.Services
 {
     public class BookService : IBookService
     {
         private readonly IBookRepository _bookRepository;
+        private readonly IAuthorService _authorService;
 
         public BookService(IBookRepository bookRepository)
         {
             _bookRepository = bookRepository;
         }
-
-        public Book GetBookById(int id)
-        {
-            return _bookRepository.GetById(id);
+        public bool BookExists(int id) {
+            var book = _bookRepository.GetById(id);
+            return book != null;
         }
 
-        public IEnumerable<Book> GetAllBooks()
+        public BookDTO GetBookById(int id)
         {
-            return _bookRepository.GetAll();
+            var book = _bookRepository.GetById(id);
+            return new BookDTO(
+                book.Id,
+                book.Title.Name,
+                book.Author.Id,
+                book.Genre.Name,
+                book.ISBN
+            );
         }
 
-        public void AddBook(Book book)
+        public IEnumerable<BookDTO> GetAllBooks()
         {
-            _bookRepository.Add(book);
+            var books = _bookRepository.GetAll();
+            return books.Select(b => new BookDTO
+            {
+                Id = b.Id,
+                Title = b.Title.Name,
+                AuthorId = b.Author.Id,
+                Genre = b.Genre.Name,
+                ISBN = b.ISBN
+            }).ToList();
         }
 
-        public void UpdateBook(Book book)
+        public void AddBook(BookDTO book)
         {
-            _bookRepository.Update(book);
+            if(!_authorService.AuthorExists((int)book.AuthorId)) {
+
+            }
+            else {
+                int authorId = book.AuthorId.Value;
+                var authorEntity = _authorService.GetAuthorById(authorId);
+                var bookEntity = new Book(
+                    new Title(book.Title),
+                    new Author(authorId,
+                        new FirstName(authorEntity.FirstName),
+                        new LastName(authorEntity.LastName)
+                    ),
+                    new Genre(book.Genre),
+                    book.ISBN
+                );
+                _bookRepository.Add(bookEntity);
+            }
+        }
+
+        public void UpdateBook(int id, BookDTO book)
+        {
+            if(!_authorService.AuthorExists((int)book.AuthorId)) {
+
+            }
+            else {
+                int authorId = book.AuthorId.Value;
+                //TODO handle if null
+                var authorEntity = _authorService.GetAuthorById(authorId);
+                var bookEntity = new Book(
+                    id,
+                    new Title(book.Title),
+                    new Author(authorId,
+                        new FirstName(authorEntity.FirstName),
+                        new LastName(authorEntity.LastName)
+                    ),
+                    new Genre(book.Genre),
+                    book.ISBN
+                );
+                _bookRepository.Update(bookEntity);
+            }
         }
 
         public void DeleteBook(int id)

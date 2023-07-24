@@ -14,8 +14,23 @@ namespace Bookstore.Infrastructure.Repositories
             // Initialize the in-memory book list (for demonstration purposes)
             _books = new List<Book>
             {
-                new Book { Id = 1, Title = new Title("Book 1"), Author = new Author("Author 1"), Genre = new Genre("Fiction"), ISBN = "123456789" },
-                new Book { Id = 2, Title = new Title("Book 2"), Author = "Author 2", Genre = new Genre("Fantasy"), ISBN = "987654321" }
+                new Book {
+                    Id = 1,
+                    Title = new Title("Book 1"),
+                    Author = new Author(
+                        1,
+                        new FirstName("FirstName"),
+                        new LastName("LastName")),
+                    Genre = new Genre("Fiction"),
+                    ISBN = "123456789" },
+                new Book { Id = 2,
+                    Title = new Title("Book 2"),
+                    Author = new Author(
+                        1,
+                        new FirstName("FirstName"),
+                        new LastName("LastName")),
+                    Genre = new Genre("Fantasy"),
+                    ISBN = "987654321" }
                 // Add more books as needed
             };
         }

@@ -2,14 +2,17 @@
 
 using System.Collections.Generic;
 using Bookstore.Domain.Entities;
+using Bookstore.Domain.ValueObjects;
+using Bookstore.Domain.Models;
 namespace Bookstore.Domain.Interfaces
 {
     public interface IBookService
     {
-        Book GetBookById(int id);
-        IEnumerable<Book> GetAllBooks();
-        void AddBook(Book book);
-        void UpdateBook(Book book);
+        bool BookExists(int id);
+        BookDTO GetBookById(int id);
+        IEnumerable<BookDTO> GetAllBooks();
+        void AddBook(BookDTO book);
+        void UpdateBook(int id, BookDTO book);
         void DeleteBook(int id);
     }
 }

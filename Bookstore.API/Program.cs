@@ -14,9 +14,11 @@ builder.Services.AddSwaggerGen();
 
 // Application Services
 builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<IAuthorService, AuthorService>();
 
 // Infrastructure Services
 builder.Services.AddScoped<IBookRepository, BookRepository>();
+builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
 
 var app = builder.Build();
 

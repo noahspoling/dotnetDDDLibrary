@@ -6,9 +6,9 @@ namespace Bookstore.Domain.Entities
 {
     public class Author
     {
-        public int Id;
-        public FirstName FirstName;
-        public LastName LastName;
+        public int Id {get; set;}
+        public FirstName FirstName {get; set;}
+        public LastName LastName {get; set;}
 
         public Author()
         {
@@ -22,6 +22,7 @@ namespace Bookstore.Domain.Entities
         }
         public Author(int id, FirstName firstName, LastName lastName)
         {
+            Id = id;
             FirstName = firstName;
             LastName = lastName;
         }

@@ -2,11 +2,10 @@
 
 using Xunit;
 using Moq;
-using Bookstore.Application.Interfaces;
+using Bookstore.Domain.Interfaces;
 using Bookstore.Domain.Entities;
 using Bookstore.Domain.ValueObjects;
 using Bookstore.Application.Services;
-using Bookstore.Domain.Interfaces;
 using System.Collections.Generic;
 
 namespace Bookstore.Tests
